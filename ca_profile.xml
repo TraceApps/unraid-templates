@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<CommunityApplications>
+  <Profile>
+Templates for the Trace apps, four self-hosted web apps that each run as a single Docker container:
+
+- **NutriTrace**: personal nutrition tracker
+- **LiftTrace**: weightlifting tracker
+- **CookTrace**: recipes, pantry and cooking
+- **NoteTrace**: notes, checklists and reminders
+
+Each one has a PWA for the browser and a native Android app, with no telemetry and no accounts on external services. All four are open source under AGPL-3.0, and the images come from ghcr.io/traceapps.
+
+For help with an app, use the Discussions on its GitHub repository. For a problem with a template itself, open an issue at https://github.com/TraceApps/unraid-templates/issues. Documentation: https://traceapps.github.io/docs/
+  </Profile>
+  <Icon>https://raw.githubusercontent.com/TraceApps/unraid-templates/main/icon.png</Icon>
+  <WebPage>https://github.com/TraceApps/unraid-templates</WebPage>
+  <DonateLink>https://ko-fi.com/traceapps</DonateLink>
+  <DonateText>Support the Trace apps on Ko-fi</DonateText>
+</CommunityApplications>

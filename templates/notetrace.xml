@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>NoteTrace</Name>
+  <Repository>ghcr.io/traceapps/notetrace:latest</Repository>
+  <Registry>https://github.com/orgs/TraceApps/packages/container/package/notetrace</Registry>
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/TraceApps/notetrace/discussions</Support>
+  <Project>https://github.com/TraceApps/notetrace</Project>
+  <Overview>NoteTrace is a self-hosted notes app: quick to capture, easy to find, and it works offline. Notes, checklists and reminders sit in a card grid with labels and colors, with a Markdown editor, [[note links]], voice notes, drawings, file attachments, full-text search, version history and sharing with other accounts on your server. Import from Google Keep (Takeout, images included), Evernote (.enex), Memos, Blinko and Markdown exports such as Obsidian or Joplin, and export everything as Markdown at any time. The installed web app and the native Android app keep working with no connection. Multi-user with OIDC single sign-on and scheduled backups. No telemetry and no accounts on external services; your data stays in your appdata folder.
+
+Before the first start, set JWT_SECRET to a long random string, for example the output of openssl rand -base64 48. INSECURE_COOKIES starts at 1 so that signing in works over plain http:// on your LAN, which is how the WebUI link opens the app. Once the app sits behind an HTTPS reverse proxy, set it to 0.</Overview>
+  <Description>A self-hosted notes app: quick to capture, easy to find, and it works offline. NoteTrace runs as a single Docker container on your own hardware, with a PWA for the browser and a native Android app for your phone. No accounts on external services, no telemetry, no cloud sync unless you opt in.</Description>
+  <Category>Productivity:</Category>
+  <WebUI>http://[IP]:[PORT:3004]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/TraceApps/unraid-templates/main/templates/notetrace.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/TraceApps/unraid-templates/main/icons/notetrace.png</Icon>
+  <ExtraSearchTerms>notes note taking checklist checklists reminders keep evernote memos markdown</ExtraSearchTerms>
+  <DonateText>Support the Trace apps on Ko-fi</DonateText>
+  <DonateLink>https://ko-fi.com/traceapps</DonateLink>
+  <License>AGPL-3.0</License>
+  <Config Name="Web UI Port" Target="3004" Default="3004" Mode="tcp" Description="Port for the web interface. Change the host port if 3004 is already taken." Type="Port" Display="always" Required="true" Mask="false">3004</Config>
+  <Config Name="Database" Target="/data/db" Default="/mnt/user/appdata/notetrace/db" Mode="rw" Description="Folder for the SQLite database (notetrace.db). Back up this folder and the Uploads folder." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/notetrace/db</Config>
+  <Config Name="Uploads" Target="/data/uploads" Default="/mnt/user/appdata/notetrace/uploads" Mode="rw" Description="Folder for photos and other uploaded files." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/notetrace/uploads</Config>
+  <Config Name="JWT Secret" Target="JWT_SECRET" Default="" Mode="" Description="Required. Signs sign-in sessions and protects stored secrets. Use a long random string, for example the output of: openssl rand -base64 48. Keep it secret and keep it the same: changing it signs everyone out and makes stored sign-in and connection secrets unreadable." Type="Variable" Display="always" Required="true" Mask="true"></Config>
+  <Config Name="Insecure Cookies" Target="INSECURE_COOKIES" Default="1|0" Mode="" Description="1: sign-in works over plain http://, the way the WebUI link opens the app on your LAN. Session cookies then travel unencrypted, so keep the app on a network you trust. 0: session cookies are HTTPS-only. Use 0 behind an HTTPS reverse proxy; over plain http:// the browser drops them and signing in sends you back to the login page." Type="Variable" Display="always" Required="false" Mask="false">1</Config>
+  <Config Name="Base URL" Target="BASE_URL" Default="" Mode="" Description="Optional. Serve the app under a subpath behind a reverse proxy, for example /notetrace. Empty: served at the root." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="Recovery Token" Target="RECOVERY_TOKEN" Default="" Mode="" Description="Optional. Turns on the lockout recovery option on the login page (Disable user management), which asks for this token. Empty: recovery stays off." Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
+  <Config Name="Log Level" Target="LOG_LEVEL" Default="info|error|warn|debug" Mode="" Description="How much the server logs. Default: info." Type="Variable" Display="advanced" Required="false" Mask="false">info</Config>
+  <Config Name="Database File" Target="DB_PATH" Default="/data/db/notetrace.db" Mode="" Description="Database file inside the container. Leave as is: it sits in the Database folder above." Type="Variable" Display="advanced-hide" Required="true" Mask="false">/data/db/notetrace.db</Config>
+  <Config Name="Uploads Folder" Target="UPLOADS_PATH" Default="/data/uploads" Mode="" Description="Uploads folder inside the container. Leave as is: it is the Uploads folder above." Type="Variable" Display="advanced-hide" Required="true" Mask="false">/data/uploads</Config>
+</Container>
