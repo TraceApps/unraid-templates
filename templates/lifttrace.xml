@@ -10,7 +10,7 @@
   <Project>https://github.com/TraceApps/lifttrace</Project>
   <Overview>LiftTrace is a self-hosted weightlifting tracker. Log sets with weight, reps and RPE, run multi-week programs from starter templates or your own, and pick exercises from a library drawn from wger, Free Exercise DB and ExerciseDB, plus your own custom exercises. Statistics cover progress per exercise, records, volume, frequency and body weight, with automatic PR detection and dated progress photos. Trainer accounts can prescribe workouts to athletes, and you can import your history from Strong, Hevy, FitNotes, Jefit or Garmin FIT files. Multi-user with OIDC single sign-on and a native Android app. No telemetry and no accounts on external services; your data stays in your appdata folder.
 
-Before the first start, set JWT_SECRET to a long random string, for example the output of openssl rand -base64 48. INSECURE_COOKIES starts at 1 so that signing in works over plain http:// on your LAN, which is how the WebUI link opens the app. Once the app sits behind an HTTPS reverse proxy, set it to 0.</Overview>
+Before the first start, fill in JWT Secret with a long random string, for example the output of openssl rand -base64 48. Insecure Cookies starts at 1 so that signing in works over plain http:// on your LAN, which is how the WebUI link opens the app. Once the app sits behind an HTTPS reverse proxy, set it to 0.</Overview>
   <Description>A self-hosted weightlifting tracker. LiftTrace runs as a single Docker container on your own hardware, with a PWA for the browser and a native Android app for your phone. No accounts on external services, no telemetry, no cloud sync unless you opt in.</Description>
   <Category>Productivity:</Category>
   <WebUI>http://[IP]:[PORT:3002]/</WebUI>
